@@ -9,7 +9,11 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-module.exports = {
+// Add Camo patcher
+require('coffeescript/register')
+const camo = require('./camo')
+
+module.exports = camo({
   entry: {
     app: './src/main.js'
   },
@@ -78,4 +82,4 @@ module.exports = {
       }
     ]
   }
-}
+})
