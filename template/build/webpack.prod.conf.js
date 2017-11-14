@@ -102,6 +102,13 @@ const webpackConfig = merge(baseWebpackConfig, {
         ignore: ['.*']
       }
     ]),
+		// Move all the netlify config files to dist
+		new CopyWebpackPlugin([
+			{
+				from: path.resolve(__dirname, '../config/netlify'),
+				to: config.build.assetsRoot
+			}
+		]),
     // service worker caching
     new SWPrecacheWebpackPlugin({
       cacheId: 'my-vue-app',
